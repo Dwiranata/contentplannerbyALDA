@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Content Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Content Planner by ALDA</h1>
+        <input type="text" id="search" placeholder="Search cards..." onkeyup="searchCards()">
+    </header>
+
+    <div class="board-container">
+        <div class="board">
+            <h2 class="board-title">To Do</h2>
+            <div class="card-container" id="todo" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <!-- Cards will be added here -->
+            </div>
+            <button class="add-card-btn" onclick="showAddCardModal('todo')">Add Card</button>
+        </div>
+        <div class="board">
+            <h2 class="board-title">In Progress</h2>
+            <div class="card-container" id="inprogress" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <!-- Cards will be added here -->
+            </div>
+            <button class="add-card-btn" onclick="showAddCardModal('inprogress')">Add Card</button>
+        </div>
+        <div class="board">
+            <h2 class="board-title">Done</h2>
+            <div class="card-container" id="done" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <!-- Cards will be added here -->
+            </div>
+            <button class="add-card-btn" onclick="showAddCardModal('done')">Add Card</button>
+        </div>
+    </div>
+
+    <div id="add-card-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeAddCardModal()">&times;</span>
+            <h2>Add New Card</h2>
+            <label for="card-content">Content:</label>
+            <input type="text" id="card-content">
+            <label for="card-image">Image URL:</label>
+            <input type="text" id="card-image">
+            <button class="save-card-btn" onclick="addCard()">Add Card</button>
+        </div>
+    </div>
+
+    <div id="checklist-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Checklist</h2>
+            <ul id="checklist">
+                <!-- Checklist items will be added here -->
+            </ul>
+            <button class="add-item-btn" onclick="addChecklistItem()">Add Item</button>
+            <h3>Set Due Date</h3>
+            <input type="date" id="due-date">
+            <button class="save-date-btn" onclick="saveDueDate()">Save Date</button>
+
+        </div>
+        
+    </div>
+    <button onclick="clearLocalStorage()">Clear All Data</button>
+    <script src="scripts.js"></script>
+</body>
+</html>
